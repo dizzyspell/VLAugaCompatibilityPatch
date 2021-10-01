@@ -1,0 +1,51 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net472</TargetFramework>
+    <AssemblyName>VLAugaCompatibilityPatch</AssemblyName>
+    <Description>A compatibility patch for the Valheim Legends and Auga mods</Description>
+    <Version>0.1.0</Version>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <LangVersion>9.0</LangVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="BepInEx.Analyzers" Version="1.0.5" PrivateAssets="all" />
+    <PackageReference Include="BepInEx.Core" Version="5.*" />
+    <PackageReference Include="BepInEx.PluginInfoProps" Version="1.*" />
+	<Reference Include="assembly_guiutils_publicized, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+		<SpecificVersion>False</SpecificVersion>
+		<HintPath>.\lib\publicized_assemblies\assembly_guiutils_publicized.dll</HintPath>
+	</Reference>
+	<Reference Include="assembly_valheim_publicized, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+		<SpecificVersion>False</SpecificVersion>
+		<HintPath>.\lib\publicized_assemblies\assembly_valheim_publicized.dll</HintPath>
+	</Reference>
+	<Reference Include="UnityEngine">
+		<HintPath>.\lib\unstripped_corlib\UnityEngine.dll</HintPath>
+	</Reference>
+	<Reference Include="UnityEngine.CoreModule">
+		<HintPath>.\lib\unstripped_corlib\UnityEngine.CoreModule.dll</HintPath>
+	</Reference>
+	<Reference Include="UnityEngine.UI">
+		<HintPath>.\lib\unstripped_corlib\UnityEngine.UI.dll</HintPath>
+	</Reference>
+	  <Reference Include="UnityEngine.TextRenderingModule">
+		  <HintPath>.\lib\unstripped_corlib\UnityEngine.TextRenderingModule.dll</HintPath>
+	  </Reference>
+	  <Reference Include="UnityEngine.AssetBundleModule">
+		  <HintPath>.\lib\unstripped_corlib\UnityEngine.AssetBundleModule.dll</HintPath>
+	  </Reference>
+	<Reference Include="ValheimLegends">
+		<HintPath>.\lib\ValheimLegends.dll</HintPath>
+	</Reference>
+  </ItemGroup>
+  
+  <ItemGroup Condition="'$(TargetFramework.TrimEnd(`0123456789`))' == 'net'">
+    <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.2" PrivateAssets="all" />
+  </ItemGroup>
+
+  <ItemGroup>
+	<EmbeddedResource Include=".\Assets\AssetBundles\assets"/>
+  </ItemGroup>
+</Project>
